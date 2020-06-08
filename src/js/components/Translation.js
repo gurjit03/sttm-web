@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TRANSLATION_LANGUAGES } from '../constants';
 
 const PUNJABI = 'punjabi';
+const RATIO = 0.5;
 export default class Translation extends React.PureComponent {
   static defaultProps = { children: '' };
 
@@ -49,7 +50,7 @@ export default class Translation extends React.PureComponent {
   render() {
     const defaultFontSize = '18px';
     const { type, unicode, text, fontSize: _fontSize } = this.props;
-    const fontSize = _fontSize ? (0.7 * _fontSize) + 'em' : defaultFontSize;
+    const fontSize = _fontSize ? (RATIO * _fontSize) + 'em' : defaultFontSize;
 
     if (type === PUNJABI) {
       return (
