@@ -154,7 +154,6 @@ export default class Header extends React.PureComponent {
                       {!isHome && (
                         <>
                           <form
-                            noValidate="novalidate"
                             action={action}
                             id="top-bar-search-form"
                             onSubmit={onFormSubmit({
@@ -217,8 +216,7 @@ export default class Header extends React.PureComponent {
                                   {isShowKeyboard && (
                                     <button
                                       type="button"
-                                      className={`gurmukhi-keyboard-toggle ${
-                                        displayGurmukhiKeyboard ? 'active' : ''
+                                      className={`gurmukhi-keyboard-toggle ${displayGurmukhiKeyboard ? 'active' : ''
                                         }`}
                                       onClick={setGurmukhiKeyboardVisibilityAs(
                                         !displayGurmukhiKeyboard
