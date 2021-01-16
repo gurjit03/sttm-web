@@ -63,6 +63,7 @@ const initialState = {
   showTransliterationOptions: false,
   showTranslationOptions: false,
   fullScreenMode: false,
+  sangatSyncFullScreenMode: false,
   translationLanguages: getArrayFromLocalStorage(
     LOCAL_STORAGE_KEY_FOR_TRANSLATION_LANGUAGES,
     DEFAULT_TRANSLATION_LANGUAGES

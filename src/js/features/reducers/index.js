@@ -10,6 +10,7 @@ import {
   TOGGLE_SPLIT_VIEW_OPTION,
   TOGGLE_VISRAAMS,
   TOGGLE_SEHAJ_PAATH_MODE,
+  SET_SANGAT_SYNC_FULLSCREEN_MODE,
   SET_MAHANKOSH_TOOLTIP_EXPLAINATION,
   SET_MAHANKOSH_TOOLTIP_ACTIVE,
   SET_VISRAAM_SOURCE,
@@ -65,7 +66,6 @@ import {
 } from '@/constants';
 import {
   saveToLocalStorage,
-  getArrayFromLocalStorage,
   clickEvent
 } from '@/util';
 import { DARK_MODE_COOKIE } from '../../../../common/constants';
@@ -111,6 +111,15 @@ export default function reducer(state, action) {
           fullScreenMode: action.payload,
         };
       }
+
+    case SET_SANGAT_SYNC_FULLSCREEN_MODE:
+      {
+        return {
+          ...state,
+          sangatSyncFullScreenMode: action.payload,
+        };
+      }
+
 
     case TOGGLE_TRANSLITERATION_OPTIONS: {
       const showTransliterationOptions = !state.showTransliterationOptions;

@@ -1,5 +1,7 @@
 /* globals SYNC_API_URL */
 import React from 'react';
+import { connect } from 'react-redux';
+import { setSangatSyncFullScreenMode } from '@/features/actions';
 import { TEXTS, LOCAL_STORAGE_KEY_FOR_SYNC_CODE } from '../../constants';
 import Viewer from './Viewer';
 import BreadCrumb from '../../components/Breadcrumb';
@@ -12,7 +14,7 @@ import { saveToLocalStorage, getStringFromLocalStorage } from '@/util'
  * @class Sync
  * @augments {React.PureComponent<SyncProps, SyncState>}
  */
-export default class Sync extends React.PureComponent {
+class Sync extends React.PureComponent {
   /**
    * @typedef {object} SyncProps
    */
@@ -31,7 +33,6 @@ export default class Sync extends React.PureComponent {
     namespaceString: '',
     error: null,
     data: {},
-    showFullScreen: false,
   };
 
   /**
@@ -46,6 +47,7 @@ export default class Sync extends React.PureComponent {
 
   render() {
     const { connected, error } = this.state;
+    const { sangatSyncFullScreenMode } = this.props;
     return (
       <div className="row" id="content-root">
         <BreadCrumb links={[{ title: TEXTS.SYNC }]} />
@@ -69,7 +71,7 @@ export default class Sync extends React.PureComponent {
                   <button onClick={this.stopSync}>Exit</button>
                 </div>
               </div>
-              <Viewer {...this.state} />
+              <Viewer {...this.state} showFullScreen={sangatSyncFullScreenMode} />
             </div>
           ) : (
               <Sync.Form onSubmit={this.handleSubmit} error={error} getCode={this.getPrevCode} />
@@ -80,7 +82,9 @@ export default class Sync extends React.PureComponent {
   }
 
   fullScreenView = (event) => {
-    this.setState({ showFullScreen: event.currentTarget.checked });
+    // this.setState({ showFullScreen: event.currentTarget.checked });
+    const { setSangatSyncFullScreenMode } = this.props;
+    setSangatSyncFullScreenMode()
   }
 
   stopSync = () => {
@@ -205,3 +209,12 @@ export default class Sync extends React.PureComponent {
       .catch(error => this._setState({ error, data: null, connected: false }));
   };
 }
+
+const mapStateToProps = ({ sangatSyncFullScreenMode }) => ({
+  sangatSyncFullScreenMode
+})
+
+const mapDispatchToProps = {
+  setSangatSyncFullScreenMode
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Sync);

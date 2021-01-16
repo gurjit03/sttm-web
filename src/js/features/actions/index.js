@@ -90,6 +90,10 @@ export const setUnicode = createAction(SET_UNICODE);
 export const SET_FULLSCREEN_MODE = 'SET_FULLSCREEN_MODE';
 export const setFullScreenMode = createAction(SET_FULLSCREEN_MODE);
 
+export const SET_SANGAT_SYNC_FULLSCREEN_MODE = 'SET_SANGAT_SYNC_FULLSCREEN_MODE';
+export const setSangatSyncFullScreenMode = createAction(SET_SANGAT_SYNC_FULLSCREEN_MODE);
+
+
 export const SET_FONT_SIZE = 'SET_FONT_SIZE';
 export const setFontSize = createAction(SET_FONT_SIZE);
 
