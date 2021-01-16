@@ -101,7 +101,6 @@ export default class Viewer extends React.PureComponent {
                 data.baniLength)
             }
             info={response.baniInfo}
-            showFullScreen={showFullScreen}
           />
         )
       } else if (type === SYNC_TYPES.SHABAD) {
@@ -111,7 +110,6 @@ export default class Viewer extends React.PureComponent {
             highlight={parseInt(data.highlight)}
             gurbani={response.verses}
             info={response.shabadInfo}
-            showFullScreen={showFullScreen}
           />
         )
       } else if (type === SYNC_TYPES.CEREMONY) {
@@ -121,7 +119,6 @@ export default class Viewer extends React.PureComponent {
             highlight={parseInt(data.highlight)}
             gurbani={versesToGurbani(response.verses, false)}
             info={response.ceremonyInfo}
-            showFullScreen={showFullScreen}
           />
         )
       }

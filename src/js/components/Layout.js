@@ -79,6 +79,7 @@ class Layout extends React.PureComponent {
       isHome = false,
       isController = false,
       autoScrollMode,
+      sangatSyncFullScreenMode,
       location: { pathname = '/' } = {},
       ...props
     } = this.props;
@@ -100,13 +101,13 @@ class Layout extends React.PureComponent {
     return online || pathname !== '/' ? (
       <React.Fragment>
         <Banner />
-        <Header
+        {!sangatSyncFullScreenMode && <Header
           defaultQuery={this.props.defaultQuery}
           isHome={isHome}
           isAng={isAng}
           isController={isController}
           {...props}
-        />
+        />}
         {this.state.error ? (
           <GenericError {...this.state.errorProps} />
         ) : (
