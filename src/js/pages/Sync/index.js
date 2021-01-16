@@ -48,6 +48,7 @@ class Sync extends React.PureComponent {
   render() {
     const { connected, error } = this.state;
     const { sangatSyncFullScreenMode } = this.props;
+    console.log(sangatSyncFullScreenMode, "sangat sync full screen mode")
     return (
       <div className="row" id="content-root">
         <BreadCrumb links={[{ title: TEXTS.SYNC }]} />
@@ -84,7 +85,7 @@ class Sync extends React.PureComponent {
   fullScreenView = (event) => {
     // this.setState({ showFullScreen: event.currentTarget.checked });
     const { setSangatSyncFullScreenMode } = this.props;
-    setSangatSyncFullScreenMode()
+    setSangatSyncFullScreenMode(event.currentTarget.checked)
   }
 
   stopSync = () => {

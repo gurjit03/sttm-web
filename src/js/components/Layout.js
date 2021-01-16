@@ -182,9 +182,11 @@ class Layout extends React.PureComponent {
   }
 }
 
+const mapStateToProps = ({ online, darkMode, autoScrollMode, sangatSyncFullScreenMode }) => ({ online, darkMode, autoScrollMode, sangatSyncFullScreenMode })
+const mapDispatchToProps = {
+  setOnlineMode,
+}
 export default connect(
-  ({ online, darkMode, autoScrollMode }) => ({ online, darkMode, autoScrollMode }),
-  {
-    setOnlineMode,
-  }
+  mapStateToProps,
+  mapDispatchToProps
 )(Layout);
