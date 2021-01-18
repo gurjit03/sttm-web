@@ -98,7 +98,7 @@ class Shabad extends React.PureComponent {
     translationFontSize: PropTypes.number.isRequired,
     fontFamily: PropTypes.string.isRequired,
     centerAlignGurbani: PropTypes.bool.isRequired,
-    showFullScreen: PropTypes.bool,
+    sangatSyncFullScreenMode: PropTypes.bool,
     paragraphMode: PropTypes.bool,
     sgBaaniLength: PropTypes.string,
   };
@@ -139,7 +139,7 @@ class Shabad extends React.PureComponent {
     const isAmritKeertanRoute = location.pathname.includes('amrit-keertan');
     const isParagraphMode = paragraphMode && isSundarGutkaRoute;
     const isShowFooterNav = this.props.hideMeta === false && !isMultiPage;
-    const isShowMetaData = this.props.hideMeta === false;
+    const isShowMetaData = !sangatSyncFullScreenMode && this.props.hideMeta === false;
     const isShowControls = this.props.hideControls === false;
     const isShowRelatedShabads = !isAmritKeertanRoute && !isSundarGutkaRoute;
 
@@ -164,18 +164,17 @@ class Shabad extends React.PureComponent {
               {...this.props.controlProps}
             />
           )}
-          {!sangatSyncFullScreenMode
-            && isShowMetaData && (
-              <Meta
-                isArrowsHidden={isMultiPage}
-                isUnicode={unicode}
-                info={info}
-                nav={nav}
-                type={type}
-                translationLanguages={translationLanguages}
-                transliterationLanguages={transliterationLanguages}
-              />
-            )}
+          {isShowMetaData && (
+            <Meta
+              isArrowsHidden={isMultiPage}
+              isUnicode={unicode}
+              info={info}
+              nav={nav}
+              type={type}
+              translationLanguages={translationLanguages}
+              transliterationLanguages={transliterationLanguages}
+            />
+          )}
           <div id="shabad" className={`shabad display display-${type}`}>
             <div className="shabad-container">
               {isMultiPage ? (
