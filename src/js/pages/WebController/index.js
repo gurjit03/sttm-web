@@ -56,7 +56,7 @@ export default class WebControllerPage extends React.PureComponent {
   handleCeremony = (ceremonyID, highlight) => {
     const currentCeremony = this.state?.shabadData?.ceremonyInfo?.ceremonyID;
     if (currentCeremony !== ceremonyID) {
-       this.setState({ loading: true, shabadData: null });
+      this.setState({ loading: true, shabadData: null });
     }
     fetch(`${CEREMONIES_URL}${ceremonyID}`)
       .then(r => r.json())
@@ -77,7 +77,7 @@ export default class WebControllerPage extends React.PureComponent {
   handleBani = (baniID, highlight, baniLength = 'extralong', mangalPosition = 'above') => {
     const currentBani = this.state?.shabadData?.baniInfo?.baniID;
     if (currentBani !== baniID) {
-       this.setState({ loading: true, shabadData: null });
+      this.setState({ loading: true, shabadData: null });
     }
     fetch(`${BANIS_API_URL}/${baniID}`)
       .then(r => r.json())
